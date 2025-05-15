@@ -1,0 +1,26 @@
+% count_vowels(StringList, Count)
+count_vowels([], 0).
+count_vowels([H|T], Count) :-
+    is_vowel(H),
+    count_vowels(T, RestCount),
+    Count is RestCount + 1.
+count_vowels([H|T], Count) :-
+    \+ is_vowel(H),
+    count_vowels(T, Count).
+
+% Define vowels
+is_vowel(a).
+is_vowel(e).
+is_vowel(i).
+is_vowel(o).
+is_vowel(u).
+is_vowel(A).
+is_vowel(E).
+is_vowel(I).
+is_vowel(O).
+is_vowel(U).
+
+% To use, convert string to list of chars:
+% Example query:
+% ?- atom_chars('Hello World', L), count_vowels(L, C).
+% C = 3.
