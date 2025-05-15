@@ -1,0 +1,17 @@
+% Facts
+student(john).
+student(mary).
+student(alex).
+
+teacher(mr_smith).
+teacher(ms_anna).
+
+subject(math, 101).
+subject(english, 102).
+
+teaches(mr_smith, math).
+teaches(ms_anna, english).
+
+enrolled(john, math).
+enrolled(mary, english).
+enrolled(alex, math).
