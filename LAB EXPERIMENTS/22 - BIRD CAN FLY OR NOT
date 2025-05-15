@@ -1,0 +1,15 @@
+% bird(Name).         -> Declares the bird
+% cannot_fly(Name).   -> Specifies birds that cannot fly
+
+bird(sparrow).
+bird(penguin).
+bird(ostrich).
+bird(eagle).
+
+cannot_fly(penguin).
+cannot_fly(ostrich).
+
+% Rule: A bird can fly if it's a bird and not listed as cannot_fly
+can_fly(Bird) :-
+    bird(Bird),
+    \+ cannot_fly(Bird).
