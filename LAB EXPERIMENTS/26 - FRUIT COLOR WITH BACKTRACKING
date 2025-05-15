@@ -1,0 +1,11 @@
+% fruit(Name, Color).
+fruit(apple, red).
+fruit(banana, yellow).
+fruit(grape, purple).
+fruit(orange, orange).
+fruit(lemon, yellow).
+fruit(cherry, red).
+
+% Query example: find fruits by color
+fruits_by_color(Color, Fruit) :-
+    fruit(Fruit, Color).
