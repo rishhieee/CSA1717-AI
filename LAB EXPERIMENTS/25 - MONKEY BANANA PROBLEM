@@ -1,0 +1,51 @@
+% State representation: state(MonkeyPos, BoxPos, HasBanana)
+
+% Initial state: monkey and box at door, banana at ceiling
+initial_state(state(door, door, no)).
+
+% Goal state: monkey has the banana
+goal_state(state(_, _, yes)).
+
+% Actions:
+
+% Move monkey
+action(state(Monkey, Box, Has), move(To), state(To, Box, Has)) :-
+    Monkey \= To.
+
+% Push box (monkey and box must be at same place)
+action(state(Pos, Pos, Has), push(To), state(To, To, Has)) :-
+    Pos \= To.
+
+% Climb box (monkey and box must be at same place)
+action(state(Pos, Pos, no), climb, state(Pos, Pos, has)).
+
+% Grab banana (monkey must be at ceiling and have climbed)
+action(state(ceiling, Box, has), grab, state(ceiling, Box, yes)).
+
+% Monkey can climb from floor to ceiling (only if on box at door)
+action(state(door, door, no), climb, state(ceiling, door, has)).
+
+% Monkey can move from door to ceiling (after climbing)
+action(state(door, Box, has), move(ceiling), state(ceiling, Box, has)).
+
+% Monkey can move from ceiling to door
+action(state(ceiling, Box, Has), move(door), state(door, Box, Has)).
+
+% Solve the problem
+solve(State, _, []) :- goal_state(State).
+solve(State, Visited, [Action|Actions]) :-
+    action(State, Action, NextState),
+    \+ member(NextState, Visited),
+    solve(NextState, [NextState|Visited], Actions).
+
+% Run example
+run :-
+    initial_state(Start),
+    solve(Start, [Start], Actions),
+    write('Actions to get banana: '), nl,
+    print_actions(Actions).
+
+print_actions([]).
+print_actions([H|T]) :-
+    write(H), nl,
+    print_actions(T).
