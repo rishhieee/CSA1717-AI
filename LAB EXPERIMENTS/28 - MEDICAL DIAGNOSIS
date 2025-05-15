@@ -1,0 +1,18 @@
+% disease(Name, SymptomsList).
+
+disease(flu, [fever, cough, headache, fatigue]).
+disease(cold, [cough, sneezing, runny_nose]).
+disease(malaria, [fever, chills, sweating, headache]).
+disease(diabetes, [frequent_urination, increased_thirst, fatigue]).
+disease(allergy, [sneezing, itchy_eyes, runny_nose]).
+
+% Check if all symptoms in DiagnosisSymptoms are in DiseaseSymptoms
+has_symptoms([], _).
+has_symptoms([H|T], Symptoms) :-
+    member(H, Symptoms),
+    has_symptoms(T, Symptoms).
+
+% Diagnose disease based on symptoms
+diagnose(Symptoms, Disease) :-
+    disease(Disease, DiseaseSymptoms),
+    has_symptoms(Symptoms, DiseaseSymptoms).
