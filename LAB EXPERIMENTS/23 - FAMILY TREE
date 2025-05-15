@@ -1,0 +1,38 @@
+% Basic gender facts
+male(john).
+male(paul).
+male(kevin).
+
+female(lisa).
+female(mary).
+female(susan).
+
+% Parent facts
+father(john, paul).
+father(john, mary).
+mother(lisa, paul).
+mother(lisa, mary).
+
+father(paul, kevin).
+mother(susan, kevin).
+
+% Rules
+parent(X, Y) :- father(X, Y).
+parent(X, Y) :- mother(X, Y).
+
+grandparent(X, Y) :-
+    parent(X, Z),
+    parent(Z, Y).
+
+sibling(X, Y) :-
+    parent(Z, X),
+    parent(Z, Y),
+    X \= Y.
+
+brother(X, Y) :-
+    sibling(X, Y),
+    male(X).
+
+sister(X, Y) :-
+    sibling(X, Y),
+    female(X).
