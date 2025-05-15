@@ -1,0 +1,14 @@
+% match_pattern(List) succeeds if List starts with 1 and 2, and ends with 5
+
+match_pattern([1, 2 | Rest]) :-
+    append(_, [5], Rest).
+
+% Example queries:
+% ?- match_pattern([1,2,3,4,5]).
+% true.
+%
+% ?- match_pattern([1,2,9,5]).
+% true.
+%
+% ?- match_pattern([1,3,5]).
+% false.
