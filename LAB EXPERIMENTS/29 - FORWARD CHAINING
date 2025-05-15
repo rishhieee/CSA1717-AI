@@ -1,0 +1,25 @@
+% Facts (known initially)
+fact(sunny).
+fact(warm).
+
+% Rules
+fact(beach_day) :- fact(sunny), fact(warm).
+fact(picnic) :- fact(warm), fact(weekend).
+
+% Inference engine to add new facts by forward chaining
+infer_new_facts :-
+    (fact(sunny), fact(warm), \+ fact(beach_day) -> assertz(fact(beach_day)), fail; true),
+    (fact(warm), fact(weekend), \+ fact(picnic) -> assertz(fact(picnic)), fail; true).
+
+% Run inference until no new facts are added
+forward_chain :-
+    infer_new_facts,
+    % check if new facts were added by seeing if any inference remains
+    \+ (infer_new_facts, fail).
+
+% Query all known facts
+show_facts :-
+    fact(F),
+    write(F), nl,
+    fail.
+show_facts.
