@@ -1,0 +1,10 @@
+% planet(Name, DistanceFromSun_in_million_km, Diameter_in_km).
+
+planet(mercury, 57.9, 4879).
+planet(venus, 108.2, 12104).
+planet(earth, 149.6, 12756).
+planet(mars, 227.9, 6792).
+planet(jupiter, 778.3, 142984).
+planet(saturn, 1427.0, 120536).
+planet(uranus, 2871.0, 51118).
+planet(neptune, 4497.1, 49528).
