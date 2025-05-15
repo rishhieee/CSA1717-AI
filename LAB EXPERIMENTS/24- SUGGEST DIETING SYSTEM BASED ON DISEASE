@@ -1,0 +1,7 @@
+% disease_diet(Disease, SuggestedDiet)
+
+disease_diet(diabetes, 'Low sugar, high fiber, whole grains, and vegetables').
+disease_diet(hypertension, 'Low salt, fruits, vegetables, and lean proteins').
+disease_diet(obesity, 'Low fat, high protein, portion control, and regular exercise').
+disease_diet(anemia, 'Iron-rich foods like spinach, red meat, and beans').
+disease_diet(cardiac, 'Low cholesterol, oats, fish, and heart-healthy fats').
