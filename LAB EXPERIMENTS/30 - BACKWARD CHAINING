@@ -1,0 +1,13 @@
+% Facts
+likes(mary, chocolate).
+likes(john, pizza).
+likes(susan, salad).
+
+% Rules
+likes(john, Food) :- healthy(Food).
+healthy(salad).
+healthy(fruits).
+
+% Query example:
+% ?- likes(john, What).
+% Prolog will try to find what John likes by checking facts and rules.
